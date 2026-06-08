@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1 id="projectSubject"></h1>
+</header>
+
+<main>
+
+<div class="card">
+
+<h2>📝 Project Details</h2>
+
+<p>
+<b>1st Project:</b>
+<br>
+<span id="project1"></span>
+</p>
+
+<hr>
+
+<p>
+<b>2nd Project:</b>
+<br>
+<span id="project2"></span>
+</p>
+
+<hr>
+
+<p>
+<b>3rd Project:</b>
+<br>
+<span id="project3"></span>
+</p>
+
+<hr>
+
+<p>
+<b>Instructions:</b>
+<br>
+<span id="instructions"></span>
+</p>
+
+</div>
+
+<br>
+
+<button onclick="goBack()">⬅ Back</button>
+
+</main>
+
+<script>
+
+const data = JSON.parse(
+localStorage.getItem("selectedProject")
+);
+
+document.getElementById("projectSubject")
+.innerText = data.subject;
+
+document.getElementById("project1")
+.innerText = data.project1;
+
+document.getElementById("project2")
+.innerText = data.project2;
+
+document.getElementById("project3")
+.innerText = data.project3;
+
+document.getElementById("instructions")
+.innerText = data.instructions;
+
+function goBack(){
+    history.back();
+}
+
+</script>
+
+</body>
+</html>

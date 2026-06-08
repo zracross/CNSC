@@ -1,70 +1,105 @@
 const API_URL =
 "https://script.google.com/macros/s/AKfycbyuo9zLjk_WlEfzThVrixK-a2VogAeGyIEkifHdqtO8qCZWg_hmuQkMcPjDbOGQ1aBE/exec";
 
+window.subjectData = [];
+
 function showSection(sectionId){
 
-    document.getElementById("syllabus").style.display = "none";
-    document.getElementById("project").style.display = "none";
+```
+document.getElementById("syllabus").style.display = "none";
+document.getElementById("project").style.display = "none";
 
-    document.getElementById(sectionId).style.display = "block";
+document.getElementById(sectionId).style.display = "block";
+```
+
 }
 
 async function loadData(){
 
-    try{
+```
+try{
 
-        const response = await fetch(API_URL);
-        const data = await response.json();
+    const response = await fetch(API_URL);
 
-        window.subjectData = data;
-
-        console.log("Data Loaded:", data);
-
-    }catch(error){
-
-        console.error(error);
-        alert("Failed to load data.");
-
+    if(!response.ok){
+        throw new Error(
+            "HTTP Error: " + response.status
+        );
     }
+
+    const data = await response.json();
+
+    window.subjectData = data;
+
+    console.log("Data Loaded:", data);
+
+}catch(error){
+
+    console.error("Load Error:", error);
+
+    window.subjectData = [];
+
+}
+```
 
 }
 
 function openSubject(subject){
 
-    const item = window.subjectData.find(
-        x => x.subject === subject
-    );
+```
+if(!window.subjectData.length){
+    alert("Data is still loading.");
+    return;
+}
 
-    if(!item){
-        alert("No data found.");
-        return;
-    }
+const item = window.subjectData.find(
+    x =>
+    String(x.subject).toUpperCase() ===
+    String(subject).toUpperCase()
+);
 
-    localStorage.setItem(
-        "selectedSubject",
-        JSON.stringify(item)
-    );
+if(!item){
+    alert("No data found.");
+    return;
+}
 
-    location.href = "subject.html";
+localStorage.setItem(
+    "selectedSubject",
+    JSON.stringify(item)
+);
+
+window.location.href = "subject.html";
+```
+
 }
 
 function openProject(subject){
 
-    const item = window.subjectData.find(
-        x => x.subject === subject
-    );
+```
+if(!window.subjectData.length){
+    alert("Data is still loading.");
+    return;
+}
 
-    if(!item){
-        alert("No data found.");
-        return;
-    }
+const item = window.subjectData.find(
+    x =>
+    String(x.subject).toUpperCase() ===
+    String(subject).toUpperCase()
+);
 
-    localStorage.setItem(
-        "selectedProject",
-        JSON.stringify(item)
-    );
+if(!item){
+    alert("No data found.");
+    return;
+}
 
-    location.href = "project.html";
+localStorage.setItem(
+    "selectedProject",
+    JSON.stringify(item)
+);
+
+window.location.href = "project.html";
+```
+
 }
 
 loadData();

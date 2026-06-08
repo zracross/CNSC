@@ -13,14 +13,12 @@ try {
 const response = await fetch(API_URL);
 const data = await response.json();
 
-```
     window.subjectData = data;
 
     console.log("Loaded:", data);
 } catch (error) {
     console.error(error);
 }
-```
 
 }
 
@@ -33,7 +31,6 @@ String(subjectName).trim().toUpperCase()
 
 function openSubject(subject) {
 
-```
 const item = findSubject(subject);
 
 if (!item) {
@@ -47,13 +44,11 @@ localStorage.setItem(
 );
 
 window.location.href = "subject.html";
-```
 
 }
 
 function openProject(subject) {
 
-```
 const item = findSubject(subject);
 
 if (!item) {
@@ -67,7 +62,6 @@ localStorage.setItem(
 );
 
 window.location.href = "project.html";
-```
 
 }
 

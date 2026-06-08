@@ -21,12 +21,6 @@ try{
 
     const response = await fetch(API_URL);
 
-    if(!response.ok){
-        throw new Error(
-            "HTTP Error: " + response.status
-        );
-    }
-
     const data = await response.json();
 
     window.subjectData = data;
@@ -37,8 +31,7 @@ try{
 
     console.error("Load Error:", error);
 
-    window.subjectData = [];
-
+    alert("Failed to load data.");
 }
 ```
 
@@ -54,8 +47,8 @@ if(!window.subjectData.length){
 
 const item = window.subjectData.find(
     x =>
-    String(x.subject).toUpperCase() ===
-    String(subject).toUpperCase()
+    String(x.subject).trim().toUpperCase() ===
+    String(subject).trim().toUpperCase()
 );
 
 if(!item){
@@ -83,8 +76,8 @@ if(!window.subjectData.length){
 
 const item = window.subjectData.find(
     x =>
-    String(x.subject).toUpperCase() ===
-    String(subject).toUpperCase()
+    String(x.subject).trim().toUpperCase() ===
+    String(subject).trim().toUpperCase()
 );
 
 if(!item){

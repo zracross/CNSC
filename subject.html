@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subject Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1 id="subjectName">Subject</h1>
+</header>
+
+<main>
+
+<div class="card">
+
+    <h2>📚 Syllabus (2nd Summative Only)</h2>
+
+    <div id="syllabusContent">
+        Loading...
+    </div>
+
+</div>
+
+<br>
+
+<button onclick="goBack()">⬅ Back</button>
+
+</main>
+
+<script>
+
+const data = JSON.parse(
+    localStorage.getItem("selectedSubject")
+);
+
+document.getElementById("subjectName")
+.innerText = data.subject;
+
+document.getElementById("syllabusContent")
+.innerHTML = data.syllabus;
+
+function goBack(){
+    history.back();
+}
+
+</script>
+
+</body>
+</html>

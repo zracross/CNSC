@@ -1,52 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Subject Details</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyuo9zLjk_WlEfzThVrixK-a2VogAeGyIEkifHdqtO8qCZWg_hmuQkMcPjDbOGQ1aBE/exec";
 
-<header>
-    <h1 id="subjectName">Subject</h1>
-</header>
+window.subjectData = [];
 
-<main>
+function showSection(sectionId) {
 
-<div class="card">
+```
+document.getElementById("syllabus").style.display = "none";
+document.getElementById("project").style.display = "none";
 
-    <h2>📚 Syllabus (2nd Summative Only)</h2>
+document.getElementById(sectionId).style.display = "block";
+```
 
-    <div id="syllabusContent">
-        Loading...
-    </div>
-
-</div>
-
-<br>
-
-<button onclick="goBack()">⬅ Back</button>
-
-</main>
-
-<script>
-
-const data = JSON.parse(
-    localStorage.getItem("selectedSubject")
-);
-
-document.getElementById("subjectName")
-.innerText = data.subject;
-
-document.getElementById("syllabusContent")
-.innerHTML = data.syllabus;
-
-function goBack(){
-    history.back();
 }
 
-</script>
+async function loadData() {
 
-</body>
-</html>
+```
+try {
+
+    console.log("Loading data...");
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+        throw new Error(
+            "HTTP Error: " + response.status
+        );
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+        throw new Error(
+            "Invalid API Response"
+        );
+    }
+
+    window.subjectData = data;
+
+    console.log(
+        "Loaded Subjects:",
+        window.subjectData
+    );
+
+} catch (error) {
+
+    console.error(
+        "Load Error:",
+        error
+    );
+
+    alert(
+        "Failed to load data. Check Apps Script Deployment."
+    );
+
+}
+```
+
+}
+
+function findSubject(subjectName) {
+
+```
+return window.subjectData.find(item =>
+    String(item.subject)
+    .trim()
+    .toUpperCase() ===
+    String(subjectName)
+    .trim()
+    .toUpperCase()
+);
+```
+
+}
+
+function openSubject(subject) {
+
+```
+if (!window.subjectData.length) {
+
+    alert(
+        "Data not loaded yet."
+    );
+
+    return;
+}
+
+const item =
+    findSubject(subject);
+
+if (!item) {
+
+    alert(
+        "Subject not found."
+    );
+
+    return;
+}
+
+localStorage.setItem(
+    "selectedSubject",
+    JSON.stringify(item)
+);
+
+window.location.href =
+    "subject.html";
+```
+
+}
+
+function openProject(subject) {
+
+```
+if (!window.subjectData.length) {
+
+    alert(
+        "Data not loaded yet."
+    );
+
+    return;
+}
+
+const item =
+    findSubject(subject);
+
+if (!item) {
+
+    alert(
+        "Project data not found."
+    );
+
+    return;
+}
+
+localStorage.setItem(
+    "selectedProject",
+    JSON.stringify(item)
+);
+
+window.location.href =
+    "project.html";
+```
+
+}
+
+loadData();

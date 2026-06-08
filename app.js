@@ -16,30 +16,28 @@ const data = await response.json();
 ```
     window.subjectData = data;
 
-    console.log("Data Loaded:", data);
+    console.log("Loaded:", data);
 } catch (error) {
-    console.error("Load Error:", error);
-    alert("Failed to load data.");
+    console.error(error);
 }
 ```
 
+}
+
+function findSubject(subjectName) {
+return window.subjectData.find(item =>
+String(item.subject).trim().toUpperCase() ===
+String(subjectName).trim().toUpperCase()
+);
 }
 
 function openSubject(subject) {
 
 ```
-if (!window.subjectData.length) {
-    alert("Data is still loading.");
-    return;
-}
-
-const item = window.subjectData.find(
-    x => String(x.subject).trim().toUpperCase() ===
-         String(subject).trim().toUpperCase()
-);
+const item = findSubject(subject);
 
 if (!item) {
-    alert("No data found.");
+    alert("Subject not found");
     return;
 }
 
@@ -56,18 +54,10 @@ window.location.href = "subject.html";
 function openProject(subject) {
 
 ```
-if (!window.subjectData.length) {
-    alert("Data is still loading.");
-    return;
-}
-
-const item = window.subjectData.find(
-    x => String(x.subject).trim().toUpperCase() ===
-         String(subject).trim().toUpperCase()
-);
+const item = findSubject(subject);
 
 if (!item) {
-    alert("No data found.");
+    alert("Project not found");
     return;
 }
 

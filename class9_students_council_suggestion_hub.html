@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Class 9 Students' Council | Suggestion Hub</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #657087;
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --mint: #d9fbe9;
+      --paper: #ffffff;
+      --line: #e7edf2;
+      --bg: #f3f8f7;
+      --gold: #f5b942;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    .page { width: min(100% - 28px, 980px); margin: 0 auto; }
+    header { padding: 18px 0 10px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-mark {
+      display: grid; place-items: center; width: 43px; height: 43px; border-radius: 14px;
+      background: var(--primary); color: white; font-size: 21px; box-shadow: 0 8px 20px #0f766e2b;
+    }
+    .brand small { display: block; color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .04em; }
+    .nav-pill { background: white; border: 1px solid var(--line); padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 750; color: var(--primary-dark); }
+    .hero {
+      position: relative; overflow: hidden; margin: 18px 0 22px; padding: clamp(24px, 5vw, 44px);
+      border-radius: 28px; color: white;
+      background: radial-gradient(circle at 90% 10%, #35b8a0 0, transparent 30%),
+                  linear-gradient(135deg, #115e59 0%, #0f766e 52%, #164e63 100%);
+      box-shadow: 0 18px 45px #0f766e24;
+    }
+    .hero:after { content: "✦"; position: absolute; right: 7%; bottom: -46px; font-size: 190px; color: #ffffff12; transform: rotate(12deg); pointer-events: none; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 999px; background: #ffffff20; border: 1px solid #ffffff35; font-size: 12px; font-weight: 750; }
+    h1 { font-size: clamp(29px, 5.2vw, 48px); line-height: 1.16; letter-spacing: -.035em; margin: 18px 0 12px; max-width: 680px; }
+    .hero p { margin: 0; max-width: 650px; color: #e1fffa; font-size: clamp(14px, 2.2vw, 17px); }
+    .ready-banner {
+      position: relative; z-index: 1; display: flex; align-items: center; gap: 13px; margin-top: 24px;
+      padding: 14px 16px; background: #ffffff; color: #14532d; border-radius: 16px; box-shadow: 0 8px 24px #063d3820;
+    }
+    .ready-icon { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border-radius: 13px; background: var(--mint); font-size: 22px; }
+    .ready-banner strong { display: block; font-size: 15px; }
+    .ready-banner span { display: block; color: #46705b; font-size: 12px; margin-top: 1px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 12px; margin: 28px 2px 14px; }
+    .section-head h2 { margin: 0; font-size: clamp(20px, 3vw, 25px); letter-spacing: -.02em; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+    .time-chip { flex-shrink: 0; border-radius: 12px; padding: 8px 11px; background: #fff4d6; color: #7c4a03; font-size: 12px; font-weight: 800; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+    .card { display: flex; gap: 13px; align-items: flex-start; padding: 17px; border-radius: 19px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 5px 16px #14213d05; }
+    .subject-icon { display: grid; place-items: center; flex: 0 0 46px; height: 46px; border-radius: 15px; font-size: 23px; }
+    .bengali { background: #ffe7e4; } .history { background: #fff0d5; } .geography { background: #dff6e9; } .life { background: #e5e7ff; } .physical { background: #dff2ff; }
+    .card-content { min-width: 0; flex: 1; }
+    .card h3 { margin: 0; font-size: 16px; line-height: 1.35; }
+    .card .english { display: block; color: var(--muted); font-size: 12px; font-weight: 600; margin-top: 2px; }
+    .date { margin-top: 11px; font-size: 14px; font-weight: 850; color: var(--primary-dark); }
+    .date small { display: block; font-size: 11px; color: var(--muted); font-weight: 650; }
+    .status { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; padding: 4px 8px; border-radius: 999px; background: #dcfce7; color: #166534; font-size: 10px; font-weight: 850; }
+    .note { display: flex; gap: 12px; margin: 20px 0 26px; padding: 16px; border-radius: 18px; background: #e9f3ff; border: 1px solid #d5e7ff; }
+    .note .bulb { font-size: 23px; }
+    .note strong { display: block; font-size: 14px; }
+    .note p { margin: 3px 0 0; color: #465c78; font-size: 12px; }
+    .exam-info { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 17px 19px; border-radius: 18px; background: #172033; color: white; }
+    .exam-info strong { font-size: 15px; }
+    .exam-info span { color: #d0d8e6; font-size: 13px; }
+    footer { padding: 24px 0 30px; text-align: center; color: var(--muted); font-size: 12px; }
+    footer strong { color: var(--primary-dark); }
+    @media (max-width: 600px) {
+      .page { width: min(100% - 22px, 980px); }
+      .nav-pill { font-size: 10px; padding: 6px 9px; }
+      .hero { border-radius: 23px; }
+      .cards { grid-template-columns: 1fr; gap: 10px; }
+      .card { padding: 15px; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .time-chip { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page">
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>Class 9 Students' Council<small>STUDENT SUGGESTION HUB</small></div>
+      </div>
+      <div class="nav-pill">SESSION 2026</div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">📣 Official Student Update</div>
+      <h1>তোমাদের পরীক্ষার প্রস্তুতি<br>এবার আরও সহজ!</h1>
+      <p>বাংলা, ইতিহাস, ভূগোল, জীবনবিজ্ঞান ও ভৌতবিজ্ঞানের সাজেশন প্রকাশের সম্পূর্ণ সময়সূচি এখানে দেখে নাও।</p>
+      <div class="ready-banner">
+        <div class="ready-icon">✅</div>
+        <div>
+          <strong>সুখবর! সব বিষয়ের সাজেশন প্রস্তুত হয়ে গিয়েছে!</strong>
+          <span>নির্ধারিত পরীক্ষার দিন সকাল ১০টায় সংশ্লিষ্ট বিষয়ের সাজেশন প্রকাশ করা হবে।</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h2>📚 Suggestion Schedule</h2>
+        <p>বিষয় অনুযায়ী প্রকাশের তারিখ ও সময়</p>
+      </div>
+      <div class="time-chip">🕙 সকাল ১০:০০ AM</div>
+    </div>
+
+    <section class="cards" aria-label="Suggestion publication schedule">
+      <article class="card">
+        <div class="subject-icon bengali">📖</div>
+        <div class="card-content">
+          <h3>বাংলা <span class="english">Bengali</span></h3>
+          <div class="date">৩০ নভেম্বর ২০২৬ <small>সোমবার · 30 Nov 2026</small></div>
+          <span class="status">✓ সাজেশন প্রস্তুত</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="subject-icon history">🏛️</div>
+        <div class="card-content">
+          <h3>ইতিহাস <span class="english">History</span></h3>
+          <div class="date">৪ ডিসেম্বর ২০২৬ <small>শুক্রবার · 04 Dec 2026</small></div>
+          <span class="status">✓ সাজেশন প্রস্তুত</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="subject-icon geography">🌍</div>
+        <div class="card-content">
+          <h3>ভূগোল <span class="english">Geography</span></h3>
+          <div class="date">৯ ডিসেম্বর ২০২৬ <small>বুধবার · 09 Dec 2026</small></div>
+          <span class="status">✓ সাজেশন প্রস্তুত</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="subject-icon life">🌱</div>
+        <div class="card-content">
+          <h3>জীবনবিজ্ঞান <span class="english">Life Science</span></h3>
+          <div class="date">১১ ডিসেম্বর ২০২৬ <small>শুক্রবার · 11 Dec 2026</small></div>
+          <span class="status">✓ সাজেশন প্রস্তুত</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="subject-icon physical">⚗️</div>
+        <div class="card-content">
+          <h3>ভৌতবিজ্ঞান <span class="english">Physical Science</span></h3>
+          <div class="date">১৪ ডিসেম্বর ২০২৬ <small>সোমবার · 14 Dec 2026</small></div>
+          <span class="status">✓ সাজেশন প্রস্তুত</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="note">
+      <div class="bulb">💡</div>
+      <div>
+        <strong>মনে রাখবে</strong>
+        <p>সাজেশন সংগ্রহের জন্য সংশ্লিষ্ট তারিখে সকাল ১০টায় এই পেজে নজর রাখবে। সাজেশন পরীক্ষার প্রস্তুতিতে সাহায্য করার জন্য—পাঠ্যবইও ভালো করে পড়বে।</p>
+      </div>
+    </section>
+
+    <section class="exam-info">
+      <div><strong>📝 পরীক্ষার সময়</strong><br><span>সব পরীক্ষার জন্য নির্ধারিত সময়</span></div>
+      <strong>11:15 AM – 2:15 PM</strong>
+    </section>
+  </main>
+
+  <footer class="page">
+    <strong>Class 9 Students' Council</strong><br>
+    Learn together. Prepare better. Do your best. 💚
+  </footer>
+</body>
+</html>

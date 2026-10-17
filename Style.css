@@ -75,6 +75,7 @@ header {
   background: var(--primary);
   color: white;
   font-size: 22px;
+  flex-shrink: 0;
 }
 
 .brand small {
@@ -92,6 +93,7 @@ header {
   color: var(--primary-dark);
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 /* Hero section */
@@ -107,6 +109,17 @@ header {
     radial-gradient(circle at 90% 10%, #35b8a0 0, transparent 30%),
     linear-gradient(135deg, #115e59, #0f766e 55%, #164e63);
   box-shadow: 0 18px 45px #0f766e24;
+}
+
+.hero::after {
+  content: "✦";
+  position: absolute;
+  right: 7%;
+  bottom: -46px;
+  font-size: 190px;
+  color: #ffffff12;
+  transform: rotate(12deg);
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -139,6 +152,8 @@ header {
 /* Suggestion ready announcement */
 
 .ready-banner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -306,6 +321,65 @@ header {
   font-weight: 800;
 }
 
+/* NEW: Geography Map Point Suggestion button */
+
+.geography-card {
+  align-items: center;
+}
+
+.map-point-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: center;
+  padding: 10px 12px;
+  border: 1px solid #b7e4d2;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  color: #065f46;
+  box-shadow: 0 4px 12px #05966912;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.map-point-btn:hover {
+  transform: translateY(-2px);
+  background: #bbf7d0;
+  box-shadow: 0 8px 18px #05966920;
+}
+
+.map-point-btn:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+.map-btn-icon {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.map-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.map-btn-text strong {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.map-btn-text small {
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 /* Student reminder */
 
 .note {
@@ -320,6 +394,7 @@ header {
 
 .note .bulb {
   font-size: 24px;
+  flex-shrink: 0;
 }
 
 .note strong {
@@ -377,9 +452,27 @@ footer strong {
     width: min(100% - 22px, 980px);
   }
 
+  .brand {
+    font-size: 14px;
+  }
+
+  .brand small {
+    font-size: 9px;
+  }
+
+  .nav-pill {
+    font-size: 10px;
+    padding: 6px 9px;
+  }
+
   .hero {
     padding: 25px 20px;
     border-radius: 23px;
+  }
+
+  .hero::after {
+    right: -10px;
+    font-size: 140px;
   }
 
   .hero h1 {
@@ -417,9 +510,49 @@ footer strong {
     align-self: flex-start;
   }
 
+  .geography-card {
+    gap: 10px;
+  }
+
+  .geography-card .subject-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .geography-card .map-point-btn {
+    padding: 9px 10px;
+  }
+
+  .geography-card .map-btn-icon {
+    font-size: 18px;
+  }
+
+  .geography-card .map-btn-text strong {
+    font-size: 11px;
+  }
+
+  .geography-card .map-btn-text small {
+    font-size: 9px;
+  }
+
   .exam-info {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 370px) {
+  .geography-card {
+    flex-wrap: wrap;
+  }
+
+  .geography-card .card-content {
+    flex-basis: calc(100% - 60px);
+  }
+
+  .geography-card .map-point-btn {
+    margin-left: 52px;
   }
 }
 

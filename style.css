@@ -1,0 +1,619 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --bg: #f0fdfa;
+  --white: #ffffff;
+  --text: #172033;
+  --muted: #64748b;
+  --border: #dcebe8;
+  --shadow: 0 10px 28px rgba(15, 118, 110, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Hind Siliguri', 'Inter', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 0% 0%, #ccfbf1 0, transparent 35%),
+    linear-gradient(180deg, #f0fdfa 0%, #f8fafc 55%, #eff6ff 100%);
+  line-height: 1.65;
+}
+
+.page,
+.container {
+  width: min(100% - 32px, 980px);
+  margin-inline: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* HEADER */
+
+header {
+  padding: 18px 0 8px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  color: white;
+  font-size: 24px;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  box-shadow: 0 7px 18px #0f766e30;
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.8px;
+  margin-top: 3px;
+}
+
+.nav-pill {
+  padding: 7px 12px;
+  border: 1px solid #bfe7dd;
+  border-radius: 999px;
+  color: #115e59;
+  background: #ffffffd9;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 20px 0 28px;
+  padding: clamp(25px, 5vw, 46px);
+  border-radius: 28px;
+  color: white;
+  background:
+    radial-gradient(circle at 92% 8%, #5eead4 0, transparent 28%),
+    radial-gradient(circle at 0% 100%, #164e63 0, transparent 42%),
+    linear-gradient(135deg, #115e59, #0f766e 58%, #0891b2);
+  box-shadow: 0 18px 42px #0f766e26;
+}
+
+.hero::after {
+  content: "✦";
+  position: absolute;
+  z-index: -1;
+  right: 4%;
+  bottom: -55px;
+  color: #ffffff12;
+  font-size: 190px;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid #ffffff40;
+  border-radius: 999px;
+  background: #ffffff1c;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero h1 {
+  max-width: 700px;
+  margin: 20px 0 13px;
+  font-size: clamp(30px, 5.5vw, 48px);
+  line-height: 1.35;
+  letter-spacing: -0.6px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #e0fffa;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* READY BANNER */
+
+.ready-banner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 25px;
+  padding: 16px;
+  border: 1px solid #d1fae5;
+  border-radius: 18px;
+  color: #14532d;
+  background: #ffffff;
+  box-shadow: 0 8px 25px #063d381a;
+}
+
+.ready-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #d1fae5;
+  font-size: 22px;
+}
+
+.ready-banner strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ready-banner span {
+  display: block;
+  margin-top: 4px;
+  color: #46705b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* SECTION TITLE */
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 14px;
+  margin: 30px 2px 16px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(21px, 3vw, 26px);
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+}
+
+.section-head p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.time-chip {
+  flex-shrink: 0;
+  padding: 9px 12px;
+  border: 1px solid #fde7a8;
+  border-radius: 13px;
+  color: #854d0e;
+  background: #fffbeb;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* SUBJECT CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--border);
+  border-radius: 21px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #a7dcd0;
+  box-shadow: 0 15px 32px #0f766e13;
+}
+
+.subject-icon {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  flex: 0 0 49px;
+  border-radius: 16px;
+  font-size: 23px;
+}
+
+.bengali {
+  background: #fff0ed;
+}
+
+.history {
+  background: #fff4db;
+}
+
+.geography {
+  background: #d9fbe9;
+}
+
+.life {
+  background: #e9e7ff;
+}
+
+.physical {
+  background: #dff3ff;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.english {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.date {
+  margin-top: 11px;
+  color: var(--primary-dark);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.date small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 11px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #166534;
+  background: #dcfce7;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+/* GEOGRAPHY MAP POINT BUTTON */
+
+.geography-card {
+  align-items: center;
+}
+
+.map-point-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: center;
+  padding: 10px 11px;
+  border: 1px solid #a7e5cc;
+  border-radius: 14px;
+  color: #065f46;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  box-shadow: 0 5px 14px #05966912;
+  transition: all 0.2s ease;
+}
+
+.map-point-btn:hover {
+  transform: translateY(-2px);
+  border-color: #6ee7b7;
+  background: #bbf7d0;
+  box-shadow: 0 8px 18px #05966920;
+}
+
+.map-point-btn:active {
+  transform: scale(0.97);
+}
+
+.map-point-btn:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+.map-btn-icon {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.map-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.map-btn-text strong {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.map-btn-text small {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* REMINDER */
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin: 24px 0 27px;
+  padding: 18px;
+  border: 1px solid #cfe3ff;
+  border-radius: 19px;
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+}
+
+.note .bulb {
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+.note strong {
+  display: block;
+  font-size: 15px;
+}
+
+.note p {
+  margin: 5px 0 0;
+  color: #465c78;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* EXAM TIMING */
+
+.exam-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #27364d;
+  border-radius: 20px;
+  color: white;
+  background: linear-gradient(120deg, #172033, #253b50);
+  box-shadow: 0 10px 25px #17203315;
+}
+
+.exam-info strong {
+  font-size: 15px;
+}
+
+.exam-info span {
+  color: #d0d8e6;
+  font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 27px 0 34px;
+  color: var(--muted);
+  text-align: center;
+  font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  font-size: 11px;
+  line-height: 2;
+}
+
+footer strong {
+  color: var(--primary-dark);
+  font-size: 13px;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 700px) {
+  .page,
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 17px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .time-chip {
+    align-self: flex-start;
+  }
+
+  .hero {
+    padding: 26px 21px;
+    border-radius: 24px;
+  }
+
+  .hero::after {
+    right: -10px;
+    font-size: 145px;
+  }
+
+  .hero h1 {
+    font-size: clamp(29px, 7vw, 37px);
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .ready-banner {
+    align-items: flex-start;
+    padding: 13px;
+  }
+
+  .ready-banner strong {
+    font-size: 14px;
+  }
+
+  .exam-info {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* SMALL MOBILE: keep Geography button on right */
+
+@media (max-width: 400px) {
+  .brand {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+
+  .brand small {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-pill {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+
+  .geography-card {
+    gap: 9px;
+  }
+
+  .geography-card .subject-icon {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+    font-size: 20px;
+  }
+
+  .geography-card .card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .map-point-btn {
+    gap: 5px;
+    padding: 9px 7px;
+  }
+
+  .map-btn-icon {
+    font-size: 17px;
+  }
+
+  .map-btn-text strong {
+    font-size: 9px;
+  }
+
+  .map-btn-text small {
+    font-size: 9px;
+  }
+
+  .geography-card h3 {
+    font-size: 15px;
+  }
+
+  .geography-card .date {
+    font-size: 13px;
+  }
+
+  .geography-card .date small {
+    font-size: 9px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

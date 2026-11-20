@@ -195,6 +195,47 @@ header {
   line-height: 1.7;
 }
 
+/* DOWNLOAD BUTTON BELOW READY BANNER */
+
+.download-action-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+}
+
+.download-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid #ffffff55;
+  border-radius: 15px;
+  color: #0f766e;
+  background: #ffffff;
+  font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(6, 61, 56, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.download-trigger-btn:hover {
+  transform: translateY(-2px);
+  background: #f0fdfa;
+  box-shadow: 0 12px 26px rgba(6, 61, 56, 0.28);
+}
+
+.download-trigger-btn:active {
+  transform: scale(0.98);
+}
+
+.download-trigger-btn:focus-visible {
+  outline: 3px solid #99f6e4;
+  outline-offset: 3px;
+}
+
 /* SECTION TITLE */
 
 .section-head {
@@ -343,9 +384,11 @@ header {
   line-height: 1.5;
 }
 
-/* GEOGRAPHY MAP POINT BUTTON */
+/* GEOGRAPHY / CARD ACTION BUTTONS */
 
-.geography-card {
+.geography-card,
+.history-card,
+.life-card {
   align-items: center;
 }
 
@@ -461,6 +504,130 @@ header {
   font-size: 12px;
 }
 
+/* PIN MODAL POPUP */
+
+.pin-modal-overlay[aria-hidden="true"] {
+  display: none !important;
+}
+
+.pin-modal-overlay[aria-hidden="false"] {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(5px);
+}
+
+.pin-modal-box {
+  position: relative;
+  width: min(100%, 380px);
+  padding: 28px 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--white);
+  color: var(--text);
+  text-align: center;
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.25);
+}
+
+.pin-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pin-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.pin-modal-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 16px;
+  background: #ccfbf1;
+  font-size: 24px;
+}
+
+.pin-modal-box h3 {
+  margin: 0 0 16px;
+  font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+#pinInput {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 10px;
+  text-align: center;
+  color: var(--text);
+  background: #f8fafc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#pinInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.14);
+}
+
+.pin-error-msg {
+  min-height: 20px;
+  margin: 8px 0 12px;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pin-submit-btn {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pin-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.32);
+}
+
+.pin-submit-btn:active {
+  transform: scale(0.98);
+}
+
 /* FOOTER */
 
 footer {
@@ -528,6 +695,10 @@ footer strong {
 
   .ready-banner strong {
     font-size: 14px;
+  }
+
+  .download-trigger-btn {
+    width: 100%;
   }
 
   .exam-info {
